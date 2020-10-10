@@ -1,7 +1,7 @@
-
+from .send_money import start_send_money_service
 
 def start_all_servicers():
-    pass
+    start_send_money_service()
 
 def start_all_emiters():
     pass

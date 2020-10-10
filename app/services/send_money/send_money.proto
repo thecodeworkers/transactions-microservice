@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+message SendCryptoRequest {
+  optional string currency = 1 [default = 'BTC'];
+  required string address = 2;
+  required double amount = 3;
+}
+
+message SendCryptoResponse {
+  required string result = 1;
+}
+
+service SendMoney {
+  rpc send_crypto (SendCryptoRequest) returns (SendCryptoResponse);
+}
