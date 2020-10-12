@@ -35,12 +35,12 @@ class Server():
         try:
             if self.__secure_server == 'False':
                 grpc_server.add_insecure_port(HOST)
-                logging.info("The server was unsecure")
+                logging.info('The server was unsecure')
 
             if self.__secure_server == 'True':
                 credentials = self.__set_private_keys()
                 grpc_server.add_secure_port(HOST, credentials)
-                logging.info("The server was secure")
+                logging.info('The server was secure')
 
             grpc_server.start()
             logging.info(f'Starting server. Listening on {HOST}')
