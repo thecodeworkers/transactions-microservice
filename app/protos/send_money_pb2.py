@@ -19,36 +19,36 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(app/services/send_money/send_money.proto\"K\n\x11SendCryptoRequest\x12\x15\n\x08\x63urrency\x18\x01 \x01(\t:\x03\x42TC\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x02(\t\x12\x0e\n\x06\x61mount\x18\x03 \x02(\x01\"$\n\x12SendCryptoResponse\x12\x0e\n\x06result\x18\x01 \x02(\t2C\n\tSendMoney\x12\x36\n\x0bsend_crypto\x12\x12.SendCryptoRequest\x1a\x13.SendCryptoResponse'
+  serialized_pb=b'\n(app/services/send_money/send_money.proto\"E\n\x10SendMoneyRequest\x12\x10\n\x08\x63urrency\x18\x01 \x02(\t\x12\x0f\n\x07\x61\x63\x63ount\x18\x02 \x02(\t\x12\x0e\n\x06\x61mount\x18\x03 \x02(\x01\"\"\n\x10WithdrawResponse\x12\x0e\n\x06result\x18\x01 \x02(\t\"\x1e\n\x0cSentResponse\x12\x0e\n\x06result\x18\x01 \x02(\t2g\n\tSendMoney\x12\x30\n\x08withdraw\x12\x11.SendMoneyRequest\x1a\x11.WithdrawResponse\x12(\n\x04sent\x12\x11.SendMoneyRequest\x1a\r.SentResponse'
 )
 
 
 
 
-_SENDCRYPTOREQUEST = _descriptor.Descriptor(
-  name='SendCryptoRequest',
-  full_name='SendCryptoRequest',
+_SENDMONEYREQUEST = _descriptor.Descriptor(
+  name='SendMoneyRequest',
+  full_name='SendMoneyRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='currency', full_name='SendCryptoRequest.currency', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=True, default_value=b"BTC".decode('utf-8'),
+      name='currency', full_name='SendMoneyRequest.currency', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='address', full_name='SendCryptoRequest.address', index=1,
+      name='account', full_name='SendMoneyRequest.account', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='amount', full_name='SendCryptoRequest.amount', index=2,
+      name='amount', full_name='SendMoneyRequest.amount', index=2,
       number=3, type=1, cpp_type=5, label=2,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
@@ -67,20 +67,20 @@ _SENDCRYPTOREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=44,
-  serialized_end=119,
+  serialized_end=113,
 )
 
 
-_SENDCRYPTORESPONSE = _descriptor.Descriptor(
-  name='SendCryptoResponse',
-  full_name='SendCryptoResponse',
+_WITHDRAWRESPONSE = _descriptor.Descriptor(
+  name='WithdrawResponse',
+  full_name='WithdrawResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='result', full_name='SendCryptoResponse.result', index=0,
+      name='result', full_name='WithdrawResponse.result', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -98,27 +98,67 @@ _SENDCRYPTORESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=121,
-  serialized_end=157,
+  serialized_start=115,
+  serialized_end=149,
 )
 
-DESCRIPTOR.message_types_by_name['SendCryptoRequest'] = _SENDCRYPTOREQUEST
-DESCRIPTOR.message_types_by_name['SendCryptoResponse'] = _SENDCRYPTORESPONSE
+
+_SENTRESPONSE = _descriptor.Descriptor(
+  name='SentResponse',
+  full_name='SentResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='result', full_name='SentResponse.result', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=151,
+  serialized_end=181,
+)
+
+DESCRIPTOR.message_types_by_name['SendMoneyRequest'] = _SENDMONEYREQUEST
+DESCRIPTOR.message_types_by_name['WithdrawResponse'] = _WITHDRAWRESPONSE
+DESCRIPTOR.message_types_by_name['SentResponse'] = _SENTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-SendCryptoRequest = _reflection.GeneratedProtocolMessageType('SendCryptoRequest', (_message.Message,), {
-  'DESCRIPTOR' : _SENDCRYPTOREQUEST,
+SendMoneyRequest = _reflection.GeneratedProtocolMessageType('SendMoneyRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SENDMONEYREQUEST,
   '__module__' : 'app.services.send_money.send_money_pb2'
-  # @@protoc_insertion_point(class_scope:SendCryptoRequest)
+  # @@protoc_insertion_point(class_scope:SendMoneyRequest)
   })
-_sym_db.RegisterMessage(SendCryptoRequest)
+_sym_db.RegisterMessage(SendMoneyRequest)
 
-SendCryptoResponse = _reflection.GeneratedProtocolMessageType('SendCryptoResponse', (_message.Message,), {
-  'DESCRIPTOR' : _SENDCRYPTORESPONSE,
+WithdrawResponse = _reflection.GeneratedProtocolMessageType('WithdrawResponse', (_message.Message,), {
+  'DESCRIPTOR' : _WITHDRAWRESPONSE,
   '__module__' : 'app.services.send_money.send_money_pb2'
-  # @@protoc_insertion_point(class_scope:SendCryptoResponse)
+  # @@protoc_insertion_point(class_scope:WithdrawResponse)
   })
-_sym_db.RegisterMessage(SendCryptoResponse)
+_sym_db.RegisterMessage(WithdrawResponse)
+
+SentResponse = _reflection.GeneratedProtocolMessageType('SentResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SENTRESPONSE,
+  '__module__' : 'app.services.send_money.send_money_pb2'
+  # @@protoc_insertion_point(class_scope:SentResponse)
+  })
+_sym_db.RegisterMessage(SentResponse)
 
 
 
@@ -129,16 +169,26 @@ _SENDMONEY = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=159,
-  serialized_end=226,
+  serialized_start=183,
+  serialized_end=286,
   methods=[
   _descriptor.MethodDescriptor(
-    name='send_crypto',
-    full_name='SendMoney.send_crypto',
+    name='withdraw',
+    full_name='SendMoney.withdraw',
     index=0,
     containing_service=None,
-    input_type=_SENDCRYPTOREQUEST,
-    output_type=_SENDCRYPTORESPONSE,
+    input_type=_SENDMONEYREQUEST,
+    output_type=_WITHDRAWRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='sent',
+    full_name='SendMoney.sent',
+    index=1,
+    containing_service=None,
+    input_type=_SENDMONEYREQUEST,
+    output_type=_SENTRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

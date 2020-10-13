@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+message ExchangeRequest {
+  required string out_currency = 1;
+  required string in_currency = 2;
+  required double out_amount = 3;
+}
+
+message ExchangeResponse {
+  required string result = 1;
+}
+
+service Exchange {
+  rpc simple_exchange (ExchangeRequest) returns (ExchangeResponse);
+}

@@ -1,5 +1,4 @@
 from .settings import Database, Server
-from .utils import paginate
 
 class App():
     def __init__(self):

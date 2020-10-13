@@ -14,17 +14,28 @@ class SendMoneyStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.send_crypto = channel.unary_unary(
-                '/SendMoney/send_crypto',
-                request_serializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendCryptoRequest.SerializeToString,
-                response_deserializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendCryptoResponse.FromString,
+        self.withdraw = channel.unary_unary(
+                '/SendMoney/withdraw',
+                request_serializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendMoneyRequest.SerializeToString,
+                response_deserializer=app_dot_services_dot_send__money_dot_send__money__pb2.WithdrawResponse.FromString,
+                )
+        self.sent = channel.unary_unary(
+                '/SendMoney/sent',
+                request_serializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendMoneyRequest.SerializeToString,
+                response_deserializer=app_dot_services_dot_send__money_dot_send__money__pb2.SentResponse.FromString,
                 )
 
 
 class SendMoneyServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def send_crypto(self, request, context):
+    def withdraw(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def sent(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,10 +44,15 @@ class SendMoneyServicer(object):
 
 def add_SendMoneyServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'send_crypto': grpc.unary_unary_rpc_method_handler(
-                    servicer.send_crypto,
-                    request_deserializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendCryptoRequest.FromString,
-                    response_serializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendCryptoResponse.SerializeToString,
+            'withdraw': grpc.unary_unary_rpc_method_handler(
+                    servicer.withdraw,
+                    request_deserializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendMoneyRequest.FromString,
+                    response_serializer=app_dot_services_dot_send__money_dot_send__money__pb2.WithdrawResponse.SerializeToString,
+            ),
+            'sent': grpc.unary_unary_rpc_method_handler(
+                    servicer.sent,
+                    request_deserializer=app_dot_services_dot_send__money_dot_send__money__pb2.SendMoneyRequest.FromString,
+                    response_serializer=app_dot_services_dot_send__money_dot_send__money__pb2.SentResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -49,7 +65,7 @@ class SendMoney(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def send_crypto(request,
+    def withdraw(request,
             target,
             options=(),
             channel_credentials=None,
@@ -58,8 +74,24 @@ class SendMoney(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/SendMoney/send_crypto',
-            app_dot_services_dot_send__money_dot_send__money__pb2.SendCryptoRequest.SerializeToString,
-            app_dot_services_dot_send__money_dot_send__money__pb2.SendCryptoResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/SendMoney/withdraw',
+            app_dot_services_dot_send__money_dot_send__money__pb2.SendMoneyRequest.SerializeToString,
+            app_dot_services_dot_send__money_dot_send__money__pb2.WithdrawResponse.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def sent(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/SendMoney/sent',
+            app_dot_services_dot_send__money_dot_send__money__pb2.SendMoneyRequest.SerializeToString,
+            app_dot_services_dot_send__money_dot_send__money__pb2.SentResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

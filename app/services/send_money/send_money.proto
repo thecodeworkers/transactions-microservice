@@ -1,15 +1,20 @@
 syntax = "proto2";
 
-message SendCryptoRequest {
-  optional string currency = 1 [default = 'BTC'];
-  required string address = 2;
+message SendMoneyRequest {
+  required string currency = 1;
+  required string account = 2;
   required double amount = 3;
 }
 
-message SendCryptoResponse {
+message WithdrawResponse {
+  required string result = 1;
+}
+
+message SentResponse {
   required string result = 1;
 }
 
 service SendMoney {
-  rpc send_crypto (SendCryptoRequest) returns (SendCryptoResponse);
+  rpc withdraw (SendMoneyRequest) returns (WithdrawResponse);
+  rpc sent (SendMoneyRequest) returns (SentResponse);
 }
