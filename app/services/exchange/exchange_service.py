@@ -5,6 +5,9 @@ from ...protos import ExchangeServicer, add_ExchangeServicer_to_server, Exchange
 
 class ExchangeService(ExchangeServicer):
     def simple_exchange(self, request, context):
+        # auth_token = parser_context(context, 'auth_token')
+        # is_auth(auth_token, '06_exchange_simple_exchange')
+
         # calculate fee
         # valid min amount
         # valid max amount

@@ -8,6 +8,9 @@ from ...models import Balances, Operations, Amounts
 class SendMoneyService(SendMoneyServicer):
     def withdraw(self, request, context):
         try:
+            # auth_token = parser_context(context, 'auth_token')
+            # is_auth(auth_token, '06_send_money_withdraw')
+
             provider_name = parser_context(context, 'provider')
 
             params = MessageToDict(request)
@@ -30,6 +33,9 @@ class SendMoneyService(SendMoneyServicer):
             context.set_code(StatusCode.INVALID_ARGUMENT)
 
     def sent(self, request, context):
+        # auth_token = parser_context(context, 'auth_token')
+        # is_auth(auth_token, '06_send_money_sent')
+
         currency = request.currency
         account = request.account
         amount = request.amount
