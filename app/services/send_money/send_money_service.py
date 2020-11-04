@@ -17,7 +17,7 @@ class SendMoneyService(SendMoneyServicer):
             params['provider'] = provider_name
 
             service_bus.init_connection()
-            response = service_bus.receive('send_crypto', params);
+            response = service_bus.receive('send_crypto', params)
             service_bus.stop()
             service_bus.close_connection()
 
